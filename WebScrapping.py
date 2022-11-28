@@ -2,18 +2,19 @@ import requests
 from time import sleep
 from datetime import datetime
 
-def get_match_data(firstCountry, secondCountry):
+def get_match_data(date, firstCountry, secondCountry):
     return requests.get(
-        url = f'https://temporeal.lance.com.br/storage/matches/copa-do-mundo-2022-28-11-2022-{firstCountry}x{secondCountry}.json'
+        url = f'https://temporeal.lance.com.br/storage/matches/copa-do-mundo-2022-{date}-{firstCountry}x{secondCountry}.json'
     ).json()
 
 last_update = None
 
-while True:
-    firstCountry = input("Primeiro Pais:")
-    secondCountry = input("Primeiro Pais:")
+date = input('Entre com uma data valida DD-MM-YYYY: ')
+firstCountry = input("Primeiro Pais: ")
+secondCountry = input("Primeiro Pais: ")
 
-    match_data = get_match_data(firstCountry, secondCountry)
+while True:
+    match_data = get_match_data(date, firstCountry, secondCountry)
 
     narrations = match_data['match']['narrations']
     last_narration = narrations[len(narrations)-1]
