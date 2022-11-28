@@ -10,7 +10,10 @@ def get_match_data(firstCountry, secondCountry):
 last_update = None
 
 while True:
-    match_data = get_match_data('portugal', 'uruguai')
+    firstCountry = input("Primeiro Pais:")
+    secondCountry = input("Primeiro Pais:")
+
+    match_data = get_match_data(firstCountry, secondCountry)
 
     narrations = match_data['match']['narrations']
     last_narration = narrations[len(narrations)-1]
